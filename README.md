@@ -40,7 +40,7 @@ A Python SDK to report experiment results to the RiseML API server.
 
 ### [riseml/examples](https://github.com/riseml/examples)
 
-Several example projects to run and test your RiseML cluster.
+Machine learning examples for getting started with RiseML.
 
 ### [riseml/monitor](https://github.com/riseml/monitor)
 
