@@ -22,7 +22,9 @@ The latest version of RiseML is v1.0.2. See the [release notes](RELEASES.md#rise
 
 ## Documentation
 
-Documentation for RiseML can be found at <http://docs.riseml.com>.
+Documentation for RiseML can be found at <https://docs.riseml.com>.
+
+Sources: https://github.com/riseml/riseml/tree/master/docs
 
 ## More Repositories
 
