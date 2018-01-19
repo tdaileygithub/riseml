@@ -20,36 +20,28 @@ The latest version of RiseML is v1.0.2. See the [release notes](RELEASES.md#rise
 | Helm          | ≥ 2.5     | If you use RBAC, you need to [configure permissions](http://docs.riseml.com/install/kubernetes.html#helm-setup) |
 | NVIDIA driver | ≥ 375     | (**Optional**) GPU only |
 
-Follow the installation instructions at: <http://docs.riseml.com/install/>.
-
-Installing Kubernetes and RiseML from scratch (Screencast, 45min):
-
-[![IMAGE ALT TEXT](http://img.youtube.com/vi/7GU1Z6TFtA0/0.jpg)](http://www.youtube.com/watch?v=7GU1Z6TFtA0 "Installing Kubernetes and RiseML from scratch")
-
 ## Documentation
 
 Documentation for RiseML can be found at <http://docs.riseml.com>.
 
-## Repositories
-
-### [riseml/monitor](https://github.com/riseml/monitor)
-
-The RiseML monitor publishes utilization stats and node information for Kubernetes nodes and PODs.
-This includes GPU information and statistics like available NVIDIA driver version, installed GPUs with serial number/model/type, current  usage and temperature.
+## More Repositories
 
 ### [riseml/cli](https://github.com/riseml/cli)
 
-The RiseML command line client connects to the RiseML API server and allows you start and monitor experiments on your GPU cluster.
+A command line interface to connect to the RiseML API server and to manage experiments on RiseML.
 
 ### [riseml/config-parser](https://github.com/riseml/config-parser)
 
-The RiseML config parser validates and parses the RiseML experiment configurations (`riseml.yml`).
-It is used by the client and server for validation and can easily be incorporated in other libraries.
+A config parser to validate and parse the `riseml.yml` file.
 
 ### [riseml/client-python](https://github.com/riseml/client-python)
 
-The RiseML Python library allows you to report results of experiments from your Python code.
+A Python SDK to report experiment results to the RiseML API server.
 
 ### [riseml/examples](https://github.com/riseml/examples)
 
-Several example projects to run and test your RiseML GPU cluster.
+Several example projects to run and test your RiseML cluster.
+
+### [riseml/monitor](https://github.com/riseml/monitor)
+
+A component to publish utilization stats and node information to the RiseML API server.
