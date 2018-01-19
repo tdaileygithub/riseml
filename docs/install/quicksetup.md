@@ -142,8 +142,8 @@ $ curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get | ba
 $ kubectl create serviceaccount tiller --namespace kube-system
 $ kubectl create clusterrolebinding tiller-cluster-admin-binding \
           --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
-$ helm repo add riseml-charts https://cdn.riseml.com/helm-charts
 $ helm init --service-account tiller --tiller-namespace kube-system
+$ helm repo add riseml-charts https://cdn.riseml.com/helm-charts
 ```
 
 ### Label RiseML Node
