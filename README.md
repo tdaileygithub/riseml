@@ -32,7 +32,7 @@ A command line interface to connect to the RiseML API server and to manage exper
 
 ### [riseml/config-parser](https://github.com/riseml/config-parser)
 
-A config parser to validate and parse the `riseml.yml` file.
+A config parser to validate and parse `riseml.yml` files.
 
 ### [riseml/client-python](https://github.com/riseml/client-python)
 
