@@ -18,19 +18,29 @@ To get started execute this command on your favourite terminal
 This command will guide you through the installation process.
 **Note**: if you register for an account on the homepage you will get a **personalized link** for downloading the installer, and you don't need to provide the account key as shown below.
 
-  The following shows a sample output of the installer using 1 master, 1 GPU, and 3 worker nodes:
+  The following shows a sample output of the installer using 1 GPU worker and 3 CPU worker nodes with autoscaling enabled:
 
-    Installing the RiseML cluster
+    Choose a region or availability zone in which to install RiseML. If a region is chosen
+    the cluster will be in the spread across all of the region's availability zones.
+
+    * AWS region or availability zone [default: us-east-1]: 
+
+    Configure CPU as well as GPU worker nodes. Make sure that the instance type is
+    available in your region and that instance limits suffice. Autoscaling is enabled by
+    default. Set min/max to the same value to disable autoscaling.
+
+    * CPU workers
+      min count [default: 0]: 
+      max count [default: 3]: 
+      instance type [default: m4.2xlarge]: 
+
+    * GPU workers
+      min count [default: 0]:  
+      max count [default: 3]: 1
+      instance type [default: p3.2xlarge]: 
+
+    Your cluster ID is 5f76fb19-cf34-481b-bb95-7b3185bcd498
     RiseML account key: dc6s49mblq5ifxokdkorqtdx3h06nkwm
-    AWS Availability Zone [default: us-east-1]:
-    Master Node type [default: m4.2xlarge]:
-    Number of Master Nodes [default: 1]:
-    GPU Enabled (y/n)[default: n]: y
-    GPU Node type [default: p2.xlarge]:
-    Number of GPU Nodes [default: 1]:
-    Worker Node type [default: m4.large]:
-    Number of Worker Nodes [default: 3]:
-    Your cluster ID is 2df8a0ae-2eb4-49b3-ba78-5486e0a8668f
 
 	--- output trimmed ---
 
@@ -38,9 +48,10 @@ This command will guide you through the installation process.
     AWS access key: AKI*****************
     AWS secret access key: 9azJha**********************************
     We are about to create these components on AWS:
-      1 (m4.large) for the master node
-      3 (m4.large) for the worker nodes
-      1 (p2.xlarge) for the GPU worker nodes
+      1 (m4.2xlarge) nodes for the Kubernetes master
+      1 (m4.2xlarge) nodes for the RiseML system
+      0-3 (m4.2xlarge) nodes for the CPU workers
+      0-1 (p3.2xlarge) nodes for the GPU workers
     These will be created using AWS Access Key: AKI*****************
     Are you sure you wish to continue (y/n)[default: n]: y
 
@@ -57,7 +68,8 @@ This command will guide you through the installation process.
     User Name: admin
     API Key: RnrjsdzpdwGDu4bvi9B9bscgvJyGUe5d
 
-    The RiseML client is installed in /home/satran/.riseml/bin directory. Add these to your profile environment.
+    The RiseML client is installed in /home/satran/.riseml/bin directory. Add these to your
+    profile environment.
       export PATH=/home/satran/.riseml/bin:$PATH
 
 

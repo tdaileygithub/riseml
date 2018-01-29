@@ -1,3 +1,7 @@
+# RiseML v1.0.3 (2018/01/29)
+
+This release improves autoscaling on AWS using our installer.
+
 # RiseML v1.0.2 (2018/01/17)
 
 This release brings persistence for the NFS provisioner. Together with the latest version
