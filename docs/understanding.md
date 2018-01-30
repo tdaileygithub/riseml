@@ -1,3 +1,6 @@
+---
+description: Overview of RiseML architecture and concepts
+---
 # Understanding RiseML
 
 RiseML provides a simple yet powerful abstraction for machine learning engineers working on GPU infrastructure both in the cloud and on bare metal.

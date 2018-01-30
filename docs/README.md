@@ -1,3 +1,6 @@
+---
+description: RiseML documentation for installation and usage
+---
 # Welcome to RiseML
 
 RiseML simplifies running, tracking, and scaling deep learning experiments on [Kubernetes](https://kubernetes.io/) clusters.
