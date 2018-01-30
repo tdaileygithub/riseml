@@ -1,7 +1,7 @@
 # <a id="quick-setup"></a>Quick Setup
 
 For both quick installations options, **please have your account key ready**.
-If you don't have one yet, please obtain one by [registering](https://riseml-staging.com/pricing).
+If you don't have one yet, please obtain one by [registering](https://riseml.com/pricing).
 You can continue with the installation on [AWS](#aws) or on a [bare Kubernetes cluster](#kubernetes).
 
 ## <a id="aws"></a> Install on AWS

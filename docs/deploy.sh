@@ -13,3 +13,8 @@ gitbook build
 
 # Sync local build folder > remote s3 bucket, delete remote files not present locally
 aws s3 sync --delete $BUILD_FOLDER $S3_BUCKET
+
+# Invalidate CloudFront CDN
+aws configure set preview.cloudfront true
+aws cloudfront create-invalidation --distribution-id E18Z09OA3VI8UF --paths "/*"
+

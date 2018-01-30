@@ -23,7 +23,7 @@ nvidiaDriverDir: /var/lib/nvidia-driver-dir
 
 | Name                             | Description |
 | -------------------------------- | ---- |
-| `accountKey`                     | **Your account key. You can get one [here](https://riseml-staging.com/pricing).** |
+| `accountKey`                     | **Your account key. You can get one [here](https://riseml.com/pricing).** |
 | `adminApiKey`                    | **The API key to use for the admin user.** |
 | `adminEmail`                     | **The email address of the admin user.** |
 | `nodePorts`                      | **Use Port Mapping instead of Load Balancers.** If you have no automatic provisioning of load balancers, e.g., because you don't have any cloud integration in your present Kubernetes cluster, this will map RiseML's external services to several fixed ports on your cluster's nodes. Defaults to `true`. |

@@ -32,13 +32,13 @@ train:
   image:
     name: nvidia/cuda:8.0-cudnn7-runtime
   run: >-
-    python train_model.py --num-layers {{ num-layers }}
-                          --learning-rate {{ learning-rate }}
+    python train_model.py --num-layers {{num-layers}}
+                          --learning-rate {{learning-rate}}
                           --training-data /data/ai-toaster
 ```
 The *parameters* section defines the individual parameters and their possible values.
 Here, a total of 2 (lr) \* 2 (lr-decay) \* 2 (epochs) = 8 combinations are defined.
-During execution, the actual value of each parameter is passed to the command instead of ```{{ parameter name }}```.
+During execution, the actual value of each parameter is passed to the command instead of ```{{parameter-name}}```.
 
 Executing `riseml train` will start a hyperparameter experiment with a sub-experiment for each combination:
 ```
@@ -98,8 +98,8 @@ resources:
 revision: 4efd8d995e0c1635296ec3c404276c8d4ff2d87c
 run:
   run: >-
-    python train_model.py --num-layers {{ num-layers }}
-                          --learning-rate {{ learning-rate }}
+    python train_model.py --num-layers {{num-layers}}
+                          --learning-rate {{learning-rate}}
                           --training-data /data/ai-toaster
 
 ```
