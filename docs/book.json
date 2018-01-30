@@ -1,4 +1,10 @@
 {
   "title": "Documentation",
-  "author": "RiseML Team"
+  "author": "RiseML Team",
+  "plugins": ["analytics"],
+  "pluginsConfig": {
+    "analytics": {
+      "google": "UA-92986766-3"
+    }
+  }
 }
