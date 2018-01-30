@@ -1,6 +1,7 @@
-
+---
+description: Instructions for manual installation via Helm
+---
 # Install RiseML
-
 
 Before installing or upgrading, please always **check the [release notes](https://github.com/riseml/riseml/blob/master/RELEASES.md)** of the current version for upgrade or installation information.
 
