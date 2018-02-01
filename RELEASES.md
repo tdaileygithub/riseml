@@ -1,3 +1,7 @@
+# RiseML v1.0.4 (2018/02/01)
+
+This release fixes Tensorboard when using Tensorflow >= 1.4.0. *NOTE:* At the same time, this means, that Tensorboard is not working correctly with TF < 1.4.
+
 # RiseML v1.0.3 (2018/01/29)
 
 This release improves autoscaling on AWS using our installer.
