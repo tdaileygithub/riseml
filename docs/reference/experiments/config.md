@@ -23,17 +23,22 @@ train:
   - pip install -r requirements.txt
 ```
 
-### Recommended Images
+### <a id="images"></a> Recommended Images
 
-Here is a list of images that we recommend:
+Here is a list of repositories and images that we recommend:
 
-| Framework      | Version   | Image                                 | Comments                                       |
-| ------------   | --------- | -----------------------------         | ---------------------------------------------  |
-|                |           | ```nvidia/cuda```                     |  Base image with GPU support without framework |
-|                |           | ```nvidia/8.0-runtime```              |  Base image with GPU support (CUDA 8.0)        |
-| Caffe          |           | ```nvidia/caffe```                    | Nvidia's caffe image                           |
+| Framework      | Repository                            | Comments                                       |
+| ------------   | ------------------------------------- | ---------------------------------------------  |
+| Base image with CUDA | [```nvidia/cuda```](https://hub.docker.com/r/nvidia/cuda/) | Follow the link to find the different tags (CUDA 8, 9 etc.). Usually, you need a `devel` image, e.g. tag `9.1-cudnn7-devel` |
+| Keras          | [```gw000/keras```](https://hub.docker.com/r/gw000/keras/) |  Use tags `2.1.3-py2-tf-gpu`/`2.1.3-py3-tf-gpu` for Python 2/3 with GPU |
+| Torch          | [```kaixhin/cuda-torch```](https://hub.docker.com/r/kaixhin/cuda-torch/)   | Remove `cuda-` prefix for CPU only |
+| Caffe          | [```bvlc/caffe```](https://hub.docker.com/r/bvlc/caffe/)   | Use tag `gpu` for GPU support. |
+| CNTK           | [```microsoft/cntk```](https://hub.docker.com/r/microsoft/cntk/) |  Use tags `2.3-gpu-python3.5-cuda8.0-cudnn6.0`/`2.3-gpu-python2.7-cuda8.0-cudnn6.0` for Python 2/3 with GPU |
+| Theano         | [```kaixhin/cuda-theano```](https://hub.docker.com/r/kaixhin/cuda-theano/)   | Remove `cuda-` prefix for CPU only |
+| Lasagne        | [```kaixhin/cuda-lasagne```](https://hub.docker.com/r/kaixhin/cuda-lasagne/) | Remove `cuda-` prefix for CPU only |
 
-*For tensorflow we recommend using the framework field (mentioned under Integrate with Tensorflow)*
+
+*For **TensorFlow**, we recommend using the `framework` field (described below under [Integrate with Tensorflow](#integrate-tf))*
 
 ### Specify command to run
 **Required.** You must tell RiseML which command it should run within your final image.
@@ -101,7 +106,7 @@ train:
   run: python run.py --num-epochs {{num-epochs}} --embedding-size {{embedding-size}}
 ```
 
-### Integrate with Tensorflow
+### <a id="integrate-tf"></a>Integrate with Tensorflow
 To use RiseML's Tensorflow integration, you can specify `framework: tensorflow`
 and add a `tensorflow` section.
 Currently, the Tensorflow integration supports specifying the version to use, adding a Tensorboard to your
@@ -111,7 +116,7 @@ experiment, and running your experiment in a distributed fashion.
 train:
   framework: tensorflow
   tensorflow:
-    version: 1.3.0
+    version: 1.5.0
     tensorboard: true
     distributed:
       ps: 1
