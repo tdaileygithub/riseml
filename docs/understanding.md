@@ -12,13 +12,10 @@ Under the hood, RiseML takes care of executing these experiments on the infrastr
 
 ![alt text](/img/architecture.png "Architecture")
 
-RiseML's architecture consists of three main layers: The CLI, a backend component, and Kubernetes as a cluster orchestration framework.
-Kubernetes manages the cluster's nodes and also provides access to GPUs that are present on the nodes.
-Using Kubernetes allows RiseML jobs to run stateless and conflict-free.
+A RiseML cluster consists of a hardware layer with a number of nodes and GPUs, a Kubernetes layer that orchestrates machine learning jobs and a RiseML layer that manages experiments and turns them into Kubernetes jobs. Typically, clusters also have storage systems configured for training and model data.
 
-RiseML's backend consists of multiple components that run on top of Kubernetes. RiseML takes care
-of versioning and running your experiments, gathering their logs, and tracking the state of each experiment. This is the core of RiseML. By providing an API, cluster-external applications,
-such as RiseML's CLI, can access anc control your clusters using RiseML's abstractions.
+The RiseML layer consists of multiple components which also run on top of Kubernetes next to all machine learning jobs. For example, RiseML takes care
+of versioning, gathering logs, and tracking the state of each experiment. This is the core function of RiseML. On top RiseML provides a REST API that can be either acceessed programmatically or via the RiseML client.
 
 All experiments on the RiseML cluster run in containers, lightweight "virtual machines", running Linux.
 This enables installing project dependencies that don't interfere with each other.

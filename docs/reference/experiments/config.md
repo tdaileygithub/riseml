@@ -32,7 +32,7 @@ Here is a list of repositories and images that we recommend:
 | Base image with CUDA | [```nvidia/cuda```](https://hub.docker.com/r/nvidia/cuda/) | Follow the link to find the different tags (CUDA 8, 9 etc.). Usually, you need a `devel` image, e.g. tag `9.1-cudnn7-devel` |
 | Keras          | [```gw000/keras```](https://hub.docker.com/r/gw000/keras/) |  Use tags `2.1.3-py2-tf-gpu`/`2.1.3-py3-tf-gpu` for Python 2/3 with GPU |
 | Torch          | [```kaixhin/cuda-torch```](https://hub.docker.com/r/kaixhin/cuda-torch/)   | Remove `cuda-` prefix for CPU only |
-| Caffe          | [```bvlc/caffe```](https://hub.docker.com/r/bvlc/caffe/)   | Use tag `gpu` for GPU support. |
+| Caffe          | [```bvlc/caffe```](https://hub.docker.com/r/bvlc/caffe/)   | Use `gpu` tag for GPU support, `intel` for Intel-optimized images. |
 | CNTK           | [```microsoft/cntk```](https://hub.docker.com/r/microsoft/cntk/) |  Use tags `2.3-gpu-python3.5-cuda8.0-cudnn6.0`/`2.3-gpu-python2.7-cuda8.0-cudnn6.0` for Python 2/3 with GPU |
 | Theano         | [```kaixhin/cuda-theano```](https://hub.docker.com/r/kaixhin/cuda-theano/)   | Remove `cuda-` prefix for CPU only |
 | Lasagne        | [```kaixhin/cuda-lasagne```](https://hub.docker.com/r/kaixhin/cuda-lasagne/) | Remove `cuda-` prefix for CPU only |
