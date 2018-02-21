@@ -1,3 +1,13 @@
+# RiseML v1.1.0 (2018/02/21)
+
+This release brings [Horovod](https://github.com/uber/horovod) support, a framework for distributed training with TensorFlow, as well as support for NVidia's K8s device plugin and GKE.
+
+## Release Notes
+- Horovod support
+- Support for Nvidia's device plugin for Kubernetes - just install it and configure your RiseML installation to use `nvidiaDriverDir: /home/kubernetes/bin/nvidia`
+- Fixes when building images on GKE
+- Several UTF-8 fixes when building images and printing training logs
+
 # RiseML v1.0.4 (2018/02/01)
 
 This release fixes Tensorboard when using Tensorflow >= 1.4.0. *NOTE:* At the same time, this means, that Tensorboard is not working correctly with TF < 1.4.
