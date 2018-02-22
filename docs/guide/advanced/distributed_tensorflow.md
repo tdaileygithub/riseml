@@ -1,6 +1,4 @@
-
-
-## Distributed Training (with TensorFlow)
+## Distributed TensorFlow
 
 Training big neural networks is computationally intensive.
 In the era of big data, training a model to convergence may take a prohibitively long time.
