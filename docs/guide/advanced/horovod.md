@@ -24,10 +24,10 @@ train:
     version: 1.5.0
     distributed:
       type: horovod
-      worker: 32
+      workers: 32
   resources:
     gpus: 4
-    cpus: 24
+    cpus: 12
     mem: 4096
   run:
   - python train.py
@@ -42,7 +42,7 @@ You can also change the number of processes per worker. By default RiseML runs o
 ```
     distributed:
       type: horovod
-      worker:
+      workers:
         count: 32
         processes: 1
 ```
