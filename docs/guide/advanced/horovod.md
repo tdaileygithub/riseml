@@ -22,9 +22,8 @@ train:
   framework: tensorflow
   tensorflow:
     version: 1.5.0
-    distributed:
-      horovod:
-        workers: 32
+    horovod:
+      workers: 32
   resources:
     gpus: 4
     cpus: 12
@@ -40,11 +39,12 @@ In this case 32 workers will be started with 4 GPUs each - in total 128 GPUs. Ri
 You can also change the number of processes per worker. By default RiseML runs one Horovod process per GPU. In case a worker doesn't have a GPU it runs one process per worker. Overriding the number of processes per worker is simple:
 
 ```
-    distributed:
-      horovod
-        workers:
-          count: 32
-          processes: 1
+  framework: tensorflow
+  tensorflow:
+    horovod
+      workers:
+        count: 32
+        processes: 1
 ```
 
 This might come handy if you train a model that is already multi-GPU aware and you only want to use Horovod for distributing computation across nodes, not GPUs.
