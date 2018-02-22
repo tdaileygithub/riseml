@@ -51,15 +51,15 @@ This might come handy if you train a model that is already multi-GPU aware and y
 
 ### Source-code modifications
 
-Horovod requires you to make modifications to your TensorFlow program. Check out the [Horovod Documentation](https://github.com/uber/horovod#usage) for details. There are also a few [examples](https://github.com/uber/horovod/tree/master/examples) that are officially maintained to get started. There is also a [blog article](https://eng.uber.com/horovod/) by the Horovod team that is worth reading.
+Horovod requires you to make modifications to your TensorFlow program. Check out the [Horovod Documentation](https://github.com/uber/horovod#usage) for details. There are also a few [examples](https://github.com/uber/horovod/tree/master/examples) that are officially maintained to get started. There is also a [blog article](https://eng.uber.com/horovod/) by the Horovod authors that is worth reading.
 
 ### System Requirements
 
-We recommend a high-performance network configuration with at least 25Gbit/s inter-node bandwidth dedicated to Horovod, ideally InfiniBand or equivalent.
+We recommend a high-performance network configuration with at least 25Gbps inter-node bandwidth dedicated to Horovod, ideally InfiniBand or equivalent.
 
 #### Azure
 
-High-performance networking (30Gbps) is available to all Azure GPU VMs. To enable it choose _Accelerated Networking_. For more details check [Microsoft'sannouncement](https://azure.microsoft.com/en-us/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Additionally, [InfiniBand support](https://azure.microsoft.com/de-de/blog/more-gpus-more-power-more-intelligence/) is available to select VMs.
+High-performance networking (30Gbps) is available to all Azure GPU VMs. To enable it choose _Accelerated Networking_. For more details check [Microsoft's announcement](https://azure.microsoft.com/en-us/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Additionally, [InfiniBand support](https://azure.microsoft.com/de-de/blog/more-gpus-more-power-more-intelligence/) is available to select VMs.
 
 #### AWS
 
