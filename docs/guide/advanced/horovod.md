@@ -23,8 +23,8 @@ train:
   tensorflow:
     version: 1.5.0
     distributed:
-      type: horovod
-      workers: 32
+      horovod:
+        workers: 32
   resources:
     gpus: 4
     cpus: 12
@@ -41,10 +41,10 @@ You can also change the number of processes per worker. By default RiseML runs o
 
 ```
     distributed:
-      type: horovod
-      workers:
-        count: 32
-        processes: 1
+      horovod
+        workers:
+          count: 32
+          processes: 1
 ```
 
 This might come handy if you train a model that is already multi-GPU aware and you only want to use Horovod for distributing computation across nodes, not GPUs.
