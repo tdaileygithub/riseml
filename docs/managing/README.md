@@ -55,7 +55,7 @@ riseml system upgrade
 If you want to upgrade your cluster, you can use Helm and a new version of RiseML's Helm chart:
 ```
 $ helm repo update
-$ helm upgrade riseml-charts/riseml -f riseml-config.yml
+$ helm upgrade riseml riseml-charts/riseml -f riseml-config.yml
 ```
 However, please note that you need to respecify all configuration options from the install step.
 Before upgrading, please also **check the [release notes](https://github.com/riseml/riseml/blob/master/RELEASES.md)** of the current version for upgrade or installation information.
