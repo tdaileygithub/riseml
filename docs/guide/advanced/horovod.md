@@ -44,7 +44,7 @@ You can also change the number of processes per worker. By default RiseML runs o
 
 ```
   tensorflow:
-    horovod
+    horovod:
       workers:
         count: 32
         processes: 1
