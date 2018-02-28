@@ -46,8 +46,8 @@ The full installation manual for Helm can be found [here](https://docs.helm.sh/u
 If, for example, your master has no GPUs, you should only perform the following steps on your nodes with a GPU*
 
 Most likely, you want to use GPUs during your machine learning experiments.
-For this, you have to install NVIDIA drivers on each worker node.
-The driver files need to be accessible in the same directory on each node.
+For this, you have to install NVIDIA drivers and nvidia-docker2 and enable Kubernetes'
+device plugin feature on each worker node.
 
 First, install the drivers.
 E.g., on Ubuntu (**Note: all versions after 375 are supported**):
@@ -56,36 +56,61 @@ $ apt-get update
 $ apt-get install -y nvidia-375 libcuda1-375 nvidia-modprobe
 ```
 
-The driver files are now installed on the host, but reside in several different parts of the filesystem.
-We recommend to use [nvidia-docker](https://github.com/NVIDIA/nvidia-docker) by NVIDIA to collect the driver files into a single path:
-
-```bash
-$ wget https://github.com/NVIDIA/nvidia-docker/releases/download/v1.0.1/nvidia-docker_1.0.1-1_amd64.deb
-$ sudo dpkg -i nvidia-docker*.deb && rm nvidia-docker*.deb
+Next, [install nvidia-docker2](https://nvidia.github.io/nvidia-docker/).
+E.g., on Ubuntu:
+```
+$ curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | \
+  apt-key add -
+$ curl -s -L https://nvidia.github.io/nvidia-docker/ubuntu16.04/amd64/nvidia-docker.list | \
+  tee /etc/apt/sources.list.d/nvidia-docker.list
+$ apt-get update
+$ apt-get -y install nvidia-docker2
 ```
 
-Then, use our script to link the drivers into a directory:
-```bash
-$ wget https://cdn.riseml.com/scripts/setup_driver.sh && chmod a+x setup_driver.sh
-$ ./setup_driver.sh /var/lib/nvidia-docker/volumes/nvidia_driver/latest
+Use `apt-cache madison nvidia-docker2 nvidia-container-runtime` in case you have a version
+mismatch between your Docker version and nvidia-docker2 to list available combinations
+(nvidia-docker2's version number contains the respective docker version), e.g.:
+```
+$ apt-get install -y nvidia-docker2=2.0.2+docker17.03.2-1 nvidia-container-runtime=1.1.1+docker17.03.2-1
 ```
 
-The driver files are now available in `/var/lib/nvidia-docker/volumes/nvidia_driver/latest`.
-You can use a different path, but you need to provide it when installing RiseML and it needs to be the same on all nodes.
+Make nvidia-docker2 your default Docker runtime by editing `/etc/docker/daemon.json`:
+```
+{
+    "default-runtime": "nvidia",
+    "runtimes": {
+        "nvidia": {
+            "path": "/usr/bin/nvidia-container-runtime",
+            "runtimeArgs": []
+        }
+    }
+}
+```
 
-Next, you have to reconfigure the kubelet on your GPU node to enable its GPU support.
-Add the `--feature-gates=Accelerators=true --allow-privileged=true` flags to the startup script.
+And restart your Docker daemon:
+```
+$ systemctl restart docker
+```
+
+Next, you have to reconfigure the kubelet on your GPU node to enable its DevicePlugin support.
+Add the `--feature-gates=DevicePlugins=true` flag to the startup script.
 For example, if you used `kubeadm` to setup the cluster:
 ```
-$ echo Environment=\"KUBELET_SYSTEM_PODS_ARGS=--pod-manifest-path=/etc/kubernetes/manifests --allow-privileged=true --feature-gates=Accelerators=true\" >> /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+$ echo Environment=\"KUBELET_EXTRA_ARGS=--feature-gates=DevicePlugins=true\" >> /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+$ systemctl daemon-reload
 $ systemctl restart kubelet
 ```
 This should restart the Kubernetes kubelet and make Kubernetes' GPU support available for this node.
 
-To verify that a node registers with available GPUs use the following command (*change the node name in the command below*):
+Finally, install Nvidia's device plugin for Kubernetes into your cluster:
 ```
-$ kubectl get nodes ip-172-31-30-98 -o=custom-columns=NAME:metadata.name,GPU:.status.capacity.'alpha\.kubernetes\.io/nvidia-gpu'
-NAME              GPU
+$ kubectl create -f https://raw.githubusercontent.com/NVIDIA/k8s-device-plugin/v1.9/nvidia-device-plugin.yml
+```
+
+To verify that a node registers with available GPUs use the following command:
+```
+$ kubectl get nodes -o=custom-columns=NAME:.metadata.name,GPUs:.status.capacity.'nvidia\.com/gpu'
+NAME              GPUs
 ip-172-31-30-98   1
 ```
 
