@@ -28,6 +28,7 @@ nvidiaDriverDir: /var/lib/nvidia-driver-dir
 | `adminEmail`                     | **The email address of the admin user.** |
 | `nodePorts`                      | **Use Port Mapping instead of Load Balancers.** If you have no automatic provisioning of load balancers, e.g., because you don't have any cloud integration in your present Kubernetes cluster, this will map RiseML's external services to several fixed ports on your cluster's nodes. Defaults to `true`. |
 | `nvidiaDriverDir`                | **Path to NVIDIA driver on nodes.** Default: `/var/lib/nvidia-docker/volumes/nvidia_driver/latest`. |
+| `nodeSelectors.riseml`           | **Kubernetes node selector to limit nodes RiseML can use.** This will limit RiseML to use only nodes which you have labeled in Kubernetes. Put node labels and values directly below this key in the YAML file. Default: `empty` |
 | `nodeSelectors.system`           | **Kubernetes node selector for RiseML system components.** This will schedule RiseML's system components on specific nodes which you have labeled in Kubernetes. Put node labels and values directly below this key in the YAML file. Default: `empty` |
 | `nodeSelectors.imageBuilder`      | **Kubernetes node selector for image build jobs.** This will schedule RiseML's image build jobs on specific nodes. Default: `empty` |
 | `useRBAC`                        | **Use Kubernetes' role-based access control (RBAC).** If your Kubernetes is using RBAC, RiseML will configure permissions for itself during installation accordingly. Default: `true`|
