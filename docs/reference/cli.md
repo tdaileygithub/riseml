@@ -28,6 +28,9 @@ To switch your user, you can run `riseml user login` again or replace the api-ke
 * [kill](/reference/cli.md#kill)
 * [logs](/reference/cli.md#logs)
 * [monitor](/reference/cli.md#monitor)
+* [ls](/reference/cli.md#ls)
+* [cp](/reference/cli.md#cp)
+* [rm](/reference/cli.md#rm)
 * [system](/reference/cli.md#system)
 * [user](/reference/cli.md#user)
 * [account](/reference/cli.md#account)
@@ -120,6 +123,51 @@ Arguments:
 | ---- | ------------- | ------------------------------------------ |
 | id   | ID to monitor | last started experiment in current project |
 
+
+#### ls
+
+Lists a directory or a file on the data or output storage.
+
+
+```
+riseml ls uri
+```
+
+Arguments:
+
+| Name | Description   |
+| ---- | ------------- |
+| uri  | Uri to list. Begin with  'data://' or 'output://' to discern between data and output storage. |
+
+
+#### cp
+
+Copies files or directories from or to your data or output storage.
+
+```
+riseml cp source-uri [source-uri ...] dest-uri
+```
+
+Arguments:
+
+| Name       | Description   |
+| ---------- | ------------- |
+| source-uri | Uri to copy from. This is remote, if it begins with `data://` or `output://`, otherwise it specifies a local path. |
+
+
+#### rm
+
+Remove one or multiple files/directories from the data our output storage recursively.
+
+```
+riseml rm uri [uri ...]
+```
+
+Arguments:
+
+| Name | Description   |
+| ---- | ------------- |
+| uri  | Uri to remove, begin with `data://` or `output://` to discern between data and output storage |
 
 #### system
 
