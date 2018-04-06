@@ -28,9 +28,9 @@
           {% if config.theme.logo.icon %}
             <i class="md-icon">{{ config.theme.logo.icon }}</i>
           {% elif config.theme.logo.startswith("http") %}
-            <img src="{{ config.theme.logo }}" height="24">
+            <img src="{{ config.theme.logo }}" height="20">
           {% else %}
-            <img src="{{ base_url }}/{{ config.theme.logo }}" height="24">
+            <img src="{{ base_url }}/{{ config.theme.logo }}" height="20">
           {% endif %}
         </a>
       </div>
@@ -43,10 +43,10 @@
             {% if config.site_name == page.title %}
               {{ config.header_name }}
             {% else %}
-              <span class="md-header-nav__topic" style="margin-top: 4px;">
+              <span class="md-header-nav__topic">
                 {{ config.header_name }}
               </span>
-              <span class="md-header-nav__topic" style="margin-top: 4px;">
+              <span class="md-header-nav__topic">
                 {{ page.title }}
               </span>
             {% endif %}
