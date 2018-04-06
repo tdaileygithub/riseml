@@ -10,7 +10,7 @@ site_description: 'Documentation for RiseML'
 theme:
   name: material
   favicon: images/favicon.ico
-  logo: 'images/riseml.png'
+  logo: 'images/riseml@2x.png'
   custom_dir: 'docs/theme'
   palette:
     primary: 'indigo'
