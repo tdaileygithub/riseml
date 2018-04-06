@@ -1,0 +1,27 @@
+.md-header, .md-tabs, .md-nav--primary .md-nav__title--site, .md-nav__source{
+    background: -webkit-linear-gradient(to right, #2E004F, #371388);
+    background: linear-gradient(to right, #2E004F, #371388);
+}
+
+.md-footer-nav {
+    background: #2F2955;
+}
+
+.md-typeset table:not([class]) th {
+    background: #371F9D;
+}
+
+@media only screen and (min-width: 76.25em) {
+    .md-main__inner {
+      max-width: none;
+    }
+    .md-sidebar--primary {
+      left: 0;
+    }
+    .md-sidebar--secondary {
+      right: 0;
+      margin-left: 0;
+      -webkit-transform: none;
+      transform: none;
+    }
+  }

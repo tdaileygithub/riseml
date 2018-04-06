@@ -1,0 +1,89 @@
+site_name: RiseML Documentation
+header_name: Documentation
+site_url: https://riseml.com
+site_author: RiseML
+repo_url: https://github.com/riseml/riseml
+edit_uri: blob/master/docs
+repo_name: riseml/riseml
+docs_dir: docs
+site_description: 'Documentation for RiseML'
+theme:
+  name: material
+  favicon: images/favicon.ico
+  logo: 'images/riseml.png'
+  custom_dir: 'docs/theme'
+  palette:
+    primary: 'indigo'
+    accent: 'indigo'
+  language: en
+  font:
+    text: ProximaNovaRegular
+    code: Roboto Mono
+  feature:
+    tabs: true
+
+extra_css:
+    - css/style.css
+
+# Extensions
+markdown_extensions:
+  - markdown.extensions.admonition
+  - markdown.extensions.codehilite:
+      guess_lang: false
+  - markdown.extensions.def_list
+  - markdown.extensions.footnotes
+  - markdown.extensions.meta
+  - markdown.extensions.toc:
+      permalink: true
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+# Customization
+extra:
+  social:
+    - type: globe
+      link: http://riseml.com
+    - type: github-alt
+      link: https://github.com/riseml
+    - type: twitter
+      link: https://twitter.com/riseml
+
+
+pages:
+  - Overview:
+    - About: index.md
+    - QuickStart: quick_start.md
+    - Understanding RiseML: understanding.md
+  - Installation &amp; Setup:
+    - Overview: install/index.md
+    - Quick Setup: install/quicksetup.md
+    - Check Requirements: install/requirements.md
+    - Configure Kubernetes: install/kubernetes.md
+    - Configure RiseML: install/configuration.md
+    - Install RiseML: install/riseml.md
+    - Install CLI: install/cli.md
+    - Check and Register: install/register.md
+    - Troubleshooting: install/troubleshooting.md
+  - Usage:
+    - Preparation: guide/preparation.md
+    - Advanced Usage:
+      - Hyperparameter Optimization: guide/advanced/hyper.md
+  - Managing RiseML:
+    - Maintenance: managing/README.md
+  - Reference:
+    - Runtime Environment: reference/environment.md
