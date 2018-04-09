@@ -15,6 +15,8 @@ All of the available options (including the ones used in this example) are expla
 $ cat riseml-config.yml
 accountKey: rhglxtzcl6sgy3wtac8fbcfjoda60uwu
 adminApiKey: yourSecretApiKeyYouWantToUse1234
+minio:
+  secretKey: yourSecretMinioAccessKey
 adminEmail: user@company.com
 nvidiaDriverDir: /var/lib/nvidia-driver-dir
 ```
@@ -26,15 +28,43 @@ nvidiaDriverDir: /var/lib/nvidia-driver-dir
 | `accountKey`                     | **Your account key. You can get one [here](https://riseml.com/pricing).** |
 | `adminApiKey`                    | **The API key to use for the admin user.** |
 | `adminEmail`                     | **The email address of the admin user.** |
-| `nodePorts`                      | **Use Port Mapping instead of Load Balancers.** If you have no automatic provisioning of load balancers, e.g., because you don't have any cloud integration in your present Kubernetes cluster, this will map RiseML's external services to several fixed ports on your cluster's nodes. Defaults to `true`. |
 | `nvidiaDriverDir`                | **Path to NVIDIA driver on nodes.** Default: `/var/lib/nvidia-docker/volumes/nvidia_driver/latest`. |
-| `nodeSelectors.riseml`           | **Kubernetes node selector to limit nodes RiseML can use.** This will limit RiseML to use only nodes which you have labeled in Kubernetes. Put node labels and values directly below this key in the YAML file. Default: `empty` |
-| `nodeSelectors.system`           | **Kubernetes node selector for RiseML system components.** This will schedule RiseML's system components on specific nodes which you have labeled in Kubernetes. Put node labels and values directly below this key in the YAML file. Default: `empty` |
-| `nodeSelectors.imageBuilder`      | **Kubernetes node selector for image build jobs.** This will schedule RiseML's image build jobs on specific nodes. Default: `empty` |
 | `useRBAC`                        | **Use Kubernetes' role-based access control (RBAC).** If your Kubernetes is using RBAC, RiseML will configure permissions for itself during installation accordingly. Default: `true`|
 
-## Input and Output Data
+## Network Configuration Options
 
+These options control which network configuration is used to provide access to the cluster externally.
+The behaviour is as follows:
+ - by default, the ports defined in `nodePorts` below are used on the cluster nodes
+ - as an alternative, Kubernetes can automatically create load balancers provided by cloud providers such as AWS or Google Cloud Platform. Then you need to set `nodePorts: false` in your configuration.
+
+Besides that, the options below usually **don't have to be set**:
+
+| Name                             | Description |
+| -------------------------------- | ---- |
+| `nodePorts.web`                  | **Node port for communication access to RiseML API.** Default: `31213`. |
+| `nodePorts.sync`                 | **Node port for syncing code to RiseML.** Default: `31876`. |
+| `nodePorts.minioData`            | **Node port for minio accessing the `data` volume.** Default: `31900`. |
+| `nodePorts.minioOutput`          | **Node port for minio accessing the `output` volume.** Default: `31901`. |
+| `loadBalancerPorts.web`          | **Load balancer port for access to RiseML API.** Default: `80`. |
+| `loadBalancerPorts.sync`         | **Load balancer port for syncing code to RiseML.** Default: `8765`. |
+| `loadBalancerPorts.minioData`    | **Load balancer port for minio accessing the `data` volume.** Default: `9000`. |
+| `loadBalancerPorts.minioOutput`  | **Load balancer port for minio accessing the `output` volume.** Default: `9001`. |
+
+## Scheduling Configuration Options
+
+These options control how workload on the cluster is scheduled and where RiseML itself is running.
+
+| Name                             | Description |
+| -------------------------------- | ---- |
+| `nodeSelectors.riseml`           | **Kubernetes cluster-wide node selector for RiseML.** This will limit RiseML to run Pods only nodes which you have labeled in Kubernetes. This affects both training and system Pods. Put node labels and values directly below this key in the YAML file. Default: `{}` (empty) |
+| `nodeSelectors.system`           | **Kubernetes node selector for system components.** This will schedule RiseML's system components on specific nodes which you have labeled in Kubernetes. Put node labels and values directly below this key in the YAML file. Default: `{}` |
+| `nodeSelectors.training`         | **Kubernetes node selector for training.** This will limit training jobs to only run on accordingly labeled nodes. Put node labels and values directly below this key in the YAML file. Default: `{}` |
+| `nodeSelectors.imageBuilder`      | **Kubernetes node selector for image build jobs.** This will schedule RiseML's image build jobs on specific nodes. Default: `{}` |
+| `tolerations.training`            | **Kubernetes tolerations for training jobs.** Training and build jobs will use these tolerations. Put the list of tolerations directly below this key in the YAML file. Default: `[]` |
+
+
+## Input and Output Data
 
 Your experiments are going to read input data (training data, existing models etc.) and will write some output data (models, checkpoints etc.).
 RiseML will read and write this data using Kubernetes volumes.
@@ -80,18 +110,21 @@ The following options are available:
 ## <a id="minio"></a> Minio
 
 [Minio](https://github.com/minio/minio) is an open source object storage server compatible with Amazon S3 APIs.
-It allows you to access the `data` and `output` volumes via a web interface as well as using a [command line tool](https://github.com/minio/mc).
-The following options should be set if you want to enable Minio:
+RiseML uses Minio to provide access the `data` and `output` volumes via the RiseML CLI.
+You can also use Minio's web interface or the Minio [command line tool](https://github.com/minio/mc).
+The following options configure Minio:
 
 
 | Name               | Description |
 | ------------------ | ------------------------------------------- |
-| `minio.enabled`    | **Whether to deploy Minio.** Defaults to `false`. |
 | `minio.accessKey`  | **Access key to use for Minio.** Defaults to `minioaccess` |
 | `minio.secretKey`  | **Secret key to use for Minio.** Defaults to `eEUc1g4tOhzbO2JzoLndRR3At4ctO9EM` |
 
+## Private Registry on Google Cloud Platform
 
-If you install RiseML with Minio enabled, you will get instructions (IP/Port) on how to access Minio after installation.
+RiseML automatically detects if it is running on the Google Cloud and uses the default service account to obtain access to the registry associated with the Google Project.
+This allows you to reference private images in this registry using the `image: ` section of the `riseml.yml` for your experiments.
+
 
 ## <a id="example-configuration"></a>Example Configurations
 
@@ -107,6 +140,8 @@ accountKey: rhglxtzcl6sgy3wtac8fbcfjoda60uwu
 adminApiKey: yourSecretApiKeyYouWantToUse1234
 adminEmail: user@company.com
 nvidiaDriverDir: "/openai/cuda_drivers"
+minio:
+  secretKey: yourSecretMinioAccessKey
 nodeSelectors:
   system:
     riseml.com/system-node: "true"
@@ -129,14 +164,16 @@ accountKey: rhglxtzcl6sgy3wtac8fbcfjoda60uwu
 adminApiKey: yourSecretApiKeyYouWantToUse1234
 adminEmail: user@company.com
 nvidiaDriverDir: "/openai/cuda_drivers"
+minio:
+  secretKey: yourSecretMinioAccessKey
 nodeSelectors:
   system:
     riseml.com/system-node: "true"
   imageBuilder:
     riseml.com/build-node: "true"
 minio:
-  enabled: true
   secretKey: mySecretMinioKey
+  accessKey: myAccessMinioKey
 postgresql:
   persistence:
     enabled: true

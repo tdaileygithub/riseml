@@ -1,3 +1,23 @@
+# RiseML v1.2.2 (2018/04/09)
+
+This release adds support for private registries on GKE and improves scheduling capabilities.
+
+## Release Notes
+- support private registries on GKE, automatically detected, no configuration needed
+- `nodeSelectors.training` and `tolerations.training` to better control where training and build jobs can be run
+- fix for TensorBoard redirects being wrong in some cases
+- fix for Postgresql deployment failing when hidden directories in mount path present
+
+## Upgrade Notes:
+- The default value for `postgresql.persistence.subPath` changed from `""` to `postgresql-db`. Please make sure to use the value you used during your installation, i.e. add `postgresql.persistence.subPath: ""` to your configuration if it was previously not set.
+
+# RiseML v1.2.1 (2018/03/27)
+
+This fixes a bug when upgrading from a previous version.
+
+## Release Notes
+- fix for Kubernetes sync service which was still using nodePorts which are no longer needed
+
 # RiseML v1.2.0 (2018/03/22)
 
 🎉 Our latest release delivers some initial data management commands for

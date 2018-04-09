@@ -8,7 +8,7 @@ This repository contains the [central issue tracker](https://github.com/riseml/r
 
 ## Installation
 
-The latest version of RiseML is v1.2.0. See the [release notes](RELEASES.md#riseml-v110-20180322) for details and upgrading.
+The latest version of RiseML is v1.2.2. See the [release notes](RELEASES.md#riseml-v122-20180409) for details and upgrading.
 
 ### Software Requirements
 
