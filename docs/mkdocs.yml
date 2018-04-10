@@ -18,7 +18,7 @@ theme:
   language: en
   font:
     text: ProximaNovaRegular
-    code: Roboto Mono
+    code: Inconsolata
   feature:
     tabs: true
 
