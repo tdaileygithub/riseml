@@ -23,12 +23,15 @@ You can specify system and build nodes using Kubernetes node selectors when inst
 
 ## Network requirements
 
-To install and run RiseML, your nodes need **internet access** to pull the required docker images.
+To install and run RiseML, your nodes need **Internet access** to pull the required docker images.
 Furthermore, communication between the nodes must be possible via the Kubernetes overlay network.
 The communication between the RiseML client and the RiseML cluster depends on the way your Kubernetes cluster is configured:
 
 - **Cloud integration**: if your setup supports cloud integration (e.g., if you installed Kubernetes via [kops](https://github.com/kubernetes/kops)) and you configure RiseML to use the cloud integration (set `nodePorts: false` during RiseML installation), separate load balancers will be created for the API (on port 80) and for syncing data (on port 8765)
 - **No cloud integration**: if you set `nodePorts: true` during installation, the API port 31213 and sync port 31876 will be opened on your nodes; you can use, e.g., the Kubernetes master's IP and these ports to access RiseML with the CLI
+
+Note that **the communication between the client and the RiseML API is not encrypted by default.** Please [contact us](mailto:contact@riseml.com) if you require an encrypted connection, e.g. over the Internet.
+
 
 ## Software requirements
 The latest RiseML version has the following software requirements on your cluster's nodes:
