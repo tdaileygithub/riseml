@@ -1,10 +1,10 @@
-# <a id="quick-setup"></a>Quick Setup
+# Quick Setup
 
 For both quick installations options, **please have your account key ready**.
 If you don't have one yet, please obtain one by [registering](https://riseml.com/pricing).
 You can continue with the installation on [AWS](#aws) or on a [bare Kubernetes cluster](#kubernetes).
 
-## <a id="aws"></a> Install on AWS
+## Install on AWS
 
 If you have chosen to try out RiseML on AWS, we provide a quick start installer.
 The installer will guide you through installing Kubernetes and RiseML on AWS.
@@ -23,21 +23,21 @@ This command will guide you through the installation process.
     Choose a region or availability zone in which to install RiseML. If a region is chosen
     the cluster will be in the spread across all of the region's availability zones.
 
-    * AWS region or availability zone [default: us-east-1]: 
+    * AWS region or availability zone [default: us-east-1]:
 
     Configure CPU as well as GPU worker nodes. Make sure that the instance type is
     available in your region and that instance limits suffice. Autoscaling is enabled by
     default. Set min/max to the same value to disable autoscaling.
 
     * CPU workers
-      min count [default: 0]: 
-      max count [default: 3]: 
-      instance type [default: m4.2xlarge]: 
+      min count [default: 0]:
+      max count [default: 3]:
+      instance type [default: m4.2xlarge]:
 
     * GPU workers
-      min count [default: 0]:  
+      min count [default: 0]:
       max count [default: 3]: 1
-      instance type [default: p3.2xlarge]: 
+      instance type [default: p3.2xlarge]:
 
     Your cluster ID is 5f76fb19-cf34-481b-bb95-7b3185bcd498
     RiseML account key: dc6s49mblq5ifxokdkorqtdx3h06nkwm
@@ -87,7 +87,7 @@ On a successful execution of the command, it will provide you with details about
 
 
 
-### <a id="aws-requirements"></a> Requirements
+### Requirements
 The installer requires you have an AWS IAM user with these permissions:
   - AmazonEC2FullAccess
   - AmazonS3FullAccess
@@ -128,10 +128,10 @@ Next run `riseml-install` to try it out again.
 To avoid overwriting existing Kubernetes configuration file the installer creates a separate configuration file: `~/.riseml/install/kubeconfig`. You should export `KUBECONFIG` variable using the following command:
 
     export KUBECONFIG=~/.riseml/install/kubeconfig
-	
+
 With this set you can troubleshoot your K8s cluster with `kubectl`.
 
-## <a id="kubernetes"></a> Install on Bare Kubernetes
+## Install on Bare Kubernetes
 
 For this installation, you will need a **Kubernetes cluster** with version at least 1.8 that is already **installed and working**.
 If you don't have a Kubernetes cluster, you can check the [Kubernetes docs](https://kubernetes.io/docs/setup/pick-right-solution/) for the various installation options.
@@ -144,7 +144,7 @@ If you want to use the master node for RiseML, you need to enable the master for
 The installation will be good for **testing and evaluating RiseML**.
 It uses temporary internal storage on your nodes.
 If you restart some nodes, it is possible that information on experiments or your experiment data is lost.
-If you want to avoid this, you should perform a [custom installation](README.md#custom-installation).
+If you want to avoid this, you should perform a [custom installation](index.md#custom-installation).
 
 ### Install Helm
 
@@ -243,7 +243,7 @@ Thats it! You can now [download and setup](cli.md) the RiseML command line clien
 For accessing internal data (e.g., uploading training data, our downloading the results of experiments) you can setup [Minio](https://docs.minio.io/docs/minio-client-quickstart-guide).
 
 ***
-### <a id="untaint-master"></a> Optional: Run Regular Workloads on Master
+### Optional: Run Regular Workloads on Master
 
 By default, the Kubernetes master does not allow any regular workloads to run on it.
 If you want RiseML services to run on the master, you need to run:

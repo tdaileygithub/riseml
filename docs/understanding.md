@@ -47,7 +47,7 @@ An experiment is a single instance of your model with its associated architcture
 ### Experiment Set
 
 An experiment set is a group of experiments and behaves itself like a single experiment.
-This is useful for [hyperparameter optimization](https://github.com/riseml/docs/blob/master/guide/advanced/hyper.md) in which multiple experiments, that differ only in their model parameters, get executed.
+This is useful for [hyperparameter optimization](guide/advanced/hyper.md) in which multiple experiments, that differ only in their model parameters, get executed.
 The possible parameter combinations can be defined in the RiseML config.
 By default RiseML performs a grid search over the entire parameter space.
 

@@ -1,9 +1,9 @@
-## Maintenance
+# Maintenance
 
 This section describes [user management](/managing/README.md#user-management) as well as [upgrading](/managing/README.md#upgrade) and [uninstalling](/managing/README.md#uninstall) RiseML.
 
 
-### User Management
+## User Management
 RiseML's user management system is built around user names and API keys.
 Additionally, you can specify an email for each user.
 Upon installation, an initial user named `admin` was created for you, with which you can easily create more users:
@@ -41,7 +41,7 @@ If not, it is up to you to backup your external NFS.
 
 -->
 
-### Upgrade
+## Upgrade
 
 <!--
 Your RiseML cluster will keep itself up-to-date automatically by periodically scanning RiseML's main servers for new versions.

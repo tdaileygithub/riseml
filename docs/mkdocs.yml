@@ -66,8 +66,8 @@ extra:
 
 pages:
   - Overview:
-    - About: index.md
-    - QuickStart: quick_start.md
+    - About RiseML: index.md
+    - Quick Start: quick_start.md
     - Understanding RiseML: understanding.md
   - Installation &amp; Setup:
     - Overview: install/index.md
@@ -80,10 +80,26 @@ pages:
     - Check and Register: install/register.md
     - Troubleshooting: install/troubleshooting.md
   - Usage:
+    - Overview: guide/index.md
     - Preparation: guide/preparation.md
+    - Starting Experiments: guide/starting.md
+    - Monitoring Experiments: guide/monitoring.md
+    - Writing Output: guide/output.md
+    - Starting Experiments on GPU: guide/gpus.md
+    - TensorBoard: guide/tensorboard.md
     - Advanced Usage:
       - Hyperparameter Optimization: guide/advanced/hyper.md
+      - Distributed TensorFlow: guide/advanced/distributed_tensorflow.md
+      - Horovod: guide/advanced/horovod.md
+      - Customizing Images: guide/advanced/custom_images.md
   - Managing RiseML:
-    - Maintenance: managing/README.md
+    - User Management: managing/user_management.md
+    - Upgrade &amp; Uninstall: managing/upgrade_uninstall.md
   - Reference:
+    - Experiment:
+      - Configuration: reference/experiments/config.md
+      - States: reference/experiments/states.md
+      - Identifiers: reference/experiments/canonical_ids.md
     - Runtime Environment: reference/environment.md
+    - Command-Line Interface: reference/cli.md
+    - Client Library: reference/client/README.md

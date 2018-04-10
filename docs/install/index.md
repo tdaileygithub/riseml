@@ -13,7 +13,7 @@ The following installation options are available:
 
 **[Continue here](quicksetup.md)**, if you want to perform a quick installation.
 
-## <a id="custom-installation"></a> Custom Installation
+## Custom Installation
 
 The following steps describe a custom installation.
 
@@ -32,7 +32,7 @@ This will give RiseML information such as where to find training data, where to 
 
 ##### Step 3: Install RiseML's Cluster Components
 After you have prepared the configuration, you can [install RiseML](riseml.md) into Kubernetes using Helm.
-You will need a RiseML account key which you can get for free by contacting us through our [website](https://riseml.com/about).
+You will need a RiseML account key which you can get for free by signing up on our [website](https://riseml.com/pricing).
 
 ##### Step 4: Install RiseML's CLI
 Next, you need to [install RiseML's CLI](cli.md) on every machine you wish to use RiseML on.

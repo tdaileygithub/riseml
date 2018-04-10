@@ -1,6 +1,6 @@
-## Command-Line Interface
+# Command-Line Interface
 
-### Introduction
+## Introduction
 
 The RiseML command line interface (CLI) is a tool for running machine learning experiments and administering RiseML clusters.
 See the [installation instructions](/install/cli.md#installation-setup) in case there is no CLI installed on your system.
@@ -13,7 +13,7 @@ Some commands infer the current project by looking for the ```riseml.yml``` conf
 Parameters are optional. Passing ```-h``` as a parameter lists the available parameters for a command.
 Passing `--version` without any command prints the CLI's version number.
 
-### Configuration
+## Configuration
 RiseML's CLI stores its configuration in the file `$HOME/.riseml/config`.
 To initialize the configuration, you need to run the `riseml user login` command.
 It will ask you for the endpoint to the API server as well as the SYNC endpoint and test the connection.
@@ -21,7 +21,7 @@ Except for the current user's API key, you can get all of their values from your
 
 To switch your user, you can run `riseml user login` again or replace the api-key in the config file.
 
-### Commands
+## Commands
 
 * [train](/reference/cli.md#train)
 * [status](/reference/cli.md#status)
@@ -35,7 +35,7 @@ To switch your user, you can run `riseml user login` again or replace the api-ke
 * [user](/reference/cli.md#user)
 * [account](/reference/cli.md#account)
 
-#### train
+### train
 
 Start an experiment according to the definition given in a config file (```riseml.yml```).
 All files in the project directory (except ones residing in `.git` folders or specified
@@ -54,7 +54,7 @@ Arguments:
 | -f CONFIG_FILE   | Configuration filename | riseml.yml |
 
 
-#### status
+### status
 
 Shows status of experiments.
 The default is to show currently running experiments.
@@ -73,7 +73,7 @@ Arguments:
 | -l   | Enable long output with more details                  |                 |
 
 
-#### kill
+### kill
 
 Kill one or more experiments.
 The default is to kill the last started experiment in the current project.
@@ -90,7 +90,7 @@ Arguments:
 | -f          | force kill the job |                                     |
 
 
-#### logs
+### logs
 
 Print log output of the experiment.
 The default is to show logs for the last started experiment in the current project.
@@ -107,7 +107,7 @@ Arguments:
 | id   | ID to show logs for | last started experiment in current project |
 
 
-#### monitor
+### monitor
 
 Monitor an experiment's resources.
 The default is to monitor the last started experiment in the current project.
@@ -124,7 +124,7 @@ Arguments:
 | id   | ID to monitor | last started experiment in current project |
 
 
-#### ls
+### ls
 
 Lists a directory or a file on the data or output storage.
 
@@ -140,7 +140,7 @@ Arguments:
 | uri  | Uri to list. Begin with  'data://' or 'output://' to discern between data and output storage. |
 
 
-#### cp
+### cp
 
 Copies files or directories from or to your data or output storage.
 
@@ -155,7 +155,7 @@ Arguments:
 | source-uri | Uri to copy from. This is remote, if it begins with `data://` or `output://`, otherwise it specifies a local path. |
 
 
-#### rm
+### rm
 
 Remove one or multiple files/directories from the data our output storage recursively.
 
@@ -169,7 +169,7 @@ Arguments:
 | ---- | ------------- |
 | uri  | Uri to remove, begin with `data://` or `output://` to discern between data and output storage |
 
-#### system
+### system
 
 Access system level features, intended for cluster administrators.
 
@@ -185,7 +185,7 @@ Subcommands:
 | test | Run system self check            |
 
 
-#### system info
+### system info
 
 Show resources available on each cluster node and installed versions of RiseML and K8S.
 
@@ -199,7 +199,7 @@ Arguments:
 | ---- | ------------------------------ |
 | -l   | Show more detailed information |
 
-#### system test
+### system test
 
 Run system self check or stress tests.
 
@@ -218,7 +218,7 @@ Arguments:
 | --force-build-steps   | Cause each job to perform considerable build steps |
 
 
-#### user
+### user
 
 Manage users within the RiseML cluster.
 
@@ -238,7 +238,7 @@ Subcommands:
 | login   | Login as new a user           |
 
 
-#### user list
+### user list
 
 List existing users.
 
@@ -247,7 +247,7 @@ riseml user list
 ```
 
 
-#### user display
+### user display
 
 Show info about a single user.
 
@@ -262,7 +262,7 @@ Arguments:
 | username | User to show |
 
 
-#### user create
+### user create
 
 Create a new user.
 
@@ -278,7 +278,7 @@ Arguments:
 | --email EMAIL       | Email of the new user |
 
 
-#### user update
+### user update
 
 Update a user's email.
 Also enables a disabled user.
@@ -295,7 +295,7 @@ Arguments:
 | --email EMAIL       | Email of the new user |
 
 
-#### user disable
+### user disable
 
 Disable users to prevent them from accessing the cluster.
 
@@ -310,7 +310,7 @@ Arguments:
 | username | User to disable |
 
 
-#### user login
+### user login
 
 Login as a new user and create a new config file `$HOME/.riseml/config`.
 You will be asked the location of the API server as well as your API key and a connection check will be performed.
@@ -321,7 +321,7 @@ riseml user login
 
 
 
-#### account
+### account
 
 Manage the account associated with your cluster.
 
@@ -339,7 +339,7 @@ Subcommands:
 | sync     | Synchronize account information                 |
 
 
-#### account info
+### account info
 
 Display account information.
 
@@ -347,7 +347,7 @@ Display account information.
 riseml account info
 ```
 
-#### account register
+### account register
 
 Register an account with your cluster.
 You can register a new account (a web browser will be opened or a link will be shown) or you can associate an account key with your cluster.
@@ -356,7 +356,7 @@ You can register a new account (a web browser will be opened or a link will be s
 riseml account register
 ```
 
-#### account upgrade
+### account upgrade
 
 Upgrade your account to another plan.
 Opens a web browser or displays a link (if no web browser available).
@@ -365,7 +365,7 @@ Opens a web browser or displays a link (if no web browser available).
 riseml account upgrade
 ```
 
-#### account sync
+### account sync
 
 Synchronize information about your account from RiseML to your cluster.
 Needed if you upgrade your account to another plan and want to enable features on your cluster.

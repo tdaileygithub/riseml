@@ -38,7 +38,7 @@ The latest RiseML version has the following software requirements on your cluste
 | Linux kernel  | ≥ 3.10    |                         |
 | Docker        | ≥ 1.12.6  |                         |
 | Kubernetes    | ≥ 1.8.0   |                         |
-| Helm          | ≥ 2.5     | If you use RBAC, you need to [configure permissions](kubernetes.md#helm-setup) |
+| Helm          | ≥ 2.5     | If you use RBAC, you need to [configure permissions](kubernetes.md#permissions) |
 | Nvidia driver | ≥ 375     | (**Optional**) GPU only |
 
 The following Linux distributions have been tested: Ubuntu 16.04 LTS.

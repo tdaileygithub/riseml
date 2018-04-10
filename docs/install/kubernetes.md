@@ -13,7 +13,7 @@ namespace "riseml" created
 ```
 All experiments will be created and run in this namespace.
 
-## <a id="helm-setup"></a>Install & Setup Helm
+## Install & Setup Helm
 [Helm](https://github.com/kubernetes/helm) is Kubernetes' official package manager.
 You can get its command line client by running:
 ```
@@ -40,7 +40,7 @@ $ helm init --service-account tiller --tiller-namespace kube-system
 
 The full installation manual for Helm can be found [here](https://docs.helm.sh/using_helm/#installing-helm).
 
-## <a id="gpu-support"></a>GPU Support
+## GPU Support
 
 *This setup is only required on nodes with a GPU.
 If, for example, your master has no GPUs, you should only perform the following steps on your nodes with a GPU*
@@ -115,7 +115,7 @@ ip-172-31-30-98   1
 ```
 
 
-## <a id="labels"></a> Node Labels
+## Node Labels
 
 You can use node labels to control where RiseML places system components and schedules experiments.
 A node label consists of a *key* and a *value*.
@@ -141,14 +141,14 @@ You can use your own naming scheme for node labels or you can use the default na
 In the next step, when deploying RiseML, you can specify the label selectors (i.e., keys and values) that identify the different types of nodes.
 
 
-## <a id="persistence"></a> Persistence
+## Persistence
 
 RiseML creates [persistent volume claims](https://kubernetes.io/docs/concepts/storage/volumes/#persistentvolumeclaim) for the storage it requires.
 Below, we describe how to create the corresponding persistent volumes **manually**.
 Once the volumes are needed by RiseML, Kubernetes will assign the volumes to the claims by RiseML automatically.
 
 The corresponding persistent volumes can also be created **dynamically**, if you have setup a storage provisioner, as described, for example, [here](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#provisioning).
-For testing and evaluation purposes, we provide an [internal NFS provisioner](configuration.md#internal-nfs), that you can configure when you install RiseML.
+For testing and evaluation purposes, we provide an [internal NFS provisioner](configuration.md#internal-nfs-provisioner), that you can configure when you install RiseML.
 If you choose to use the internal NFS provisioner, you don't need to create any volumes and can skip this step.
 
 ### Data and Output Volumes
@@ -200,7 +200,7 @@ Note that in the example above, we used the same NFS server for both volumes, bu
 However, the two volumes are used completely independently, and you are free to use any backing storage that you have available.
 For example, you could also use GlusterFS for one and NFS for the other volume.
 
-### <a id="persistent-database"></a> Persisting the Database, Git, Registry and Logs ####
+### Persisting the Database, Git, Registry and Logs ####
 
 For production workloads, at least the database and Git should be persistent across container restarts.
 Losing job logs may not be critical.

@@ -1,4 +1,4 @@
-## Writing Output
+# Writing Output
 
 Your experiment may need to store intermediate or final results like checkpoints or models.
 An output folder is made available in `/output` in the execution environment of your experiment.

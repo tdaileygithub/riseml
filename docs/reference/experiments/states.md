@@ -1,4 +1,4 @@
-## Experiment States
+# Experiment States
 
 An experiment follows the following state model.
 It starts in _Created_ and ends in _Killed_, _Failed_ or _Finished_ states. A typical experiment runs through five states:

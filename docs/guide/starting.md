@@ -1,5 +1,4 @@
-
-## Starting Experiments
+# Starting Experiments
 In order to start an experiment, you need to execute the `riseml train` command:
 ```
 $ riseml train
@@ -7,7 +6,7 @@ Syncing project (16.8 MiB, 15 files)...done
 138       | [2017-08-30T09:25:56Z] --> STARTING
 138       | [2017-08-30T09:21:46Z] --> BUILDING
 138.build | [2017-08-30T09:21:53Z] Building your image
-138.build | [2017-08-30T09:21:53Z] Downloading code 
+138.build | [2017-08-30T09:21:53Z] Downloading code
 138.build | [2017-08-30T09:21:53Z] Running install commands...
 138.build | [2017-08-30T09:21:53Z] Step 1 : FROM tensorflow/tensorflow:1.2.0
 138.build | [2017-08-30T09:21:54Z] Pulling from tensorflow/tensorflow
@@ -37,7 +36,7 @@ Type `riseml logs 138` to connect to log stream again.
 ```
 
 
-### Stopping an Experiment
+## Stopping an Experiment
 If, for any reason, you want to stop your experiment, this can be achieved with the `riseml kill` command:
 ```
 $ riseml kill 138

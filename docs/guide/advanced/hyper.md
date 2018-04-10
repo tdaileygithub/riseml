@@ -1,6 +1,4 @@
-
-
-## Hyperparameter Optimization
+# Hyperparameter Optimization
 
 The performance of your final model is influenced by the training data, the kind of model, and the learning algorithm.
 The model as well as your learning algorithms have parameters of their own, like the number of layers in a neural network or the learning rate in gradient descent.
@@ -76,11 +74,11 @@ EXP ID STATE     AGE           PARAMS
 ```
 
 
-### Hyperparameter Optimization Output
+## Hyperparameter Optimization Output
 
 In order to find the best hyperparameter combination, each sub-experiment needs to output a measure of its performance.
 Often this is something like the accuracy or loss on a development set.
-With Tensorflow, such statistics can be recorded and compared via [Tensorboard](/guide/tensorboard.md).
+With Tensorflow, such statistics can be recorded and compared via [TensorBoard](/guide/tensorboard.md).
 Each experiment's parameters are also written to the output directory as part of the configuration in a file called `riseml-configuration.yml`:
 
 ```
@@ -106,8 +104,8 @@ run:
 This allows you to write performance measures to the output directory and link them to the parameters that were used to produce them.
 
 
-If you have enabled the [Tensorboard](/guide/tensorboard.md) integration, Tensorboard provides real-time statistics for all experiments below the parent directory (e.g., `144`above).
+If you have enabled the [TensorBoard](/guide/tensorboard.md) integration, TensorBoard provides real-time statistics for all experiments below the parent directory (e.g., `144`above).
 This allows you to compare different runs in real-time:
 
-![alt text](/img/tensorboard_hyper.png "Tensorboard for Hyperparameter Optimization")
+![alt text](/img/tensorboard_hyper.png "TensorBoard for Hyperparameter Optimization")
 

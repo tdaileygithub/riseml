@@ -1,5 +1,4 @@
-
-## Canonical ID
+# Canonical Experiment Identifiers
 
 The canonical ID is a hierarchical identifier scheme to access projects, experiment sets, experiments, job types, and jobs.
 It can be supplied to some ```riseml``` CLI commands, such as ```status```, ```logs```, and ```kill```.
@@ -15,7 +14,7 @@ paul.18.1.worker.3
 \_ username
 ```
 
-### Segments
+## Segments
 
 | Segment        | Type         | Description                                                        |
 | -------------- | -------------|------------------------------------------------------------------- |
@@ -30,7 +29,7 @@ If not set, the value is automatically set to the current user.
 Canonical IDs of hyperparameter optimization experiments contain experiment IDs to identify the set of all sub-experiments.
 Similarly, the canonical ID of a distributed training experiment contains an additional number to identify each job type, e.g., each worker or parameter server.
 
-### Examples
+## Examples
 
 | Canonical ID          | Description                                                                      |
 | --------------------- | -------------------------------------------------------------------------------- |

@@ -1,4 +1,4 @@
-# <a id="install-cli"></a>Install the Command-Line Interface
+# Install the Command-Line Interface
 
 The RiseML CLI is available for Linux and macos (x86-64):
 
@@ -35,4 +35,4 @@ Now you can check your user information:
 $ riseml whoami
 ```
 
-To create more users and to switch between them, please refer to the [User Management](/managing/) section.
+To create more users and to switch between them, please refer to the [User Management](/managing/user_management.md) section.
