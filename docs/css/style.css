@@ -3,6 +3,14 @@
     background: linear-gradient(to right, #2E004F, #371388);
 }
 
+.md-typeset table:not([class]) {
+  font-size: 100%;
+}
+
+.md-typeset code {
+  word-break: normal;
+}
+
 .md-tabs__link, .md-nav {
   font-size: 1.5rem;
 }
