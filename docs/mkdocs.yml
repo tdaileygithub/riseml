@@ -7,10 +7,11 @@ edit_uri: blob/master/docs
 repo_name: riseml/riseml
 docs_dir: docs
 site_description: 'Documentation for RiseML'
+copyright: © 2017-2018 RiseML GmbH. All rights reserved.
 theme:
   name: material
-  favicon: images/favicon.ico
-  logo: 'images/riseml@2x.png'
+  favicon: img/favicon.ico
+  logo: 'img/riseml@2x.png'
   custom_dir: 'docs/theme'
   palette:
     primary: 'indigo'
@@ -24,6 +25,10 @@ theme:
 
 extra_css:
     - css/style.css
+
+google_analytics:
+  - 'UA-92986766-3'
+  - 'auto'
 
 # Extensions
 markdown_extensions:
