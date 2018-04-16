@@ -21,7 +21,7 @@ theme:
     text: ProximaNovaRegular
     code: Inconsolata
   feature:
-    tabs: true
+    tabs: false
 
 extra_css:
     - css/style.css

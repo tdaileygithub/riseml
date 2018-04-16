@@ -1,4 +1,4 @@
-.md-header, .md-tabs, .md-nav--primary .md-nav__title--site, .md-nav__source{
+.md-header, .md-tabs, .md-nav__source{
     background: -webkit-linear-gradient(to right, #2E004F, #371388);
     background: linear-gradient(to right, #2E004F, #371388);
 }
