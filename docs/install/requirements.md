@@ -32,7 +32,6 @@ The communication between the RiseML client and the RiseML cluster depends on th
 
 Note that **the communication between the client and the RiseML API is not encrypted by default.** Please [contact us](mailto:contact@riseml.com) if you require an encrypted connection, e.g. over the Internet.
 
-
 ## Software requirements
 The latest RiseML version has the following software requirements on your cluster's nodes:
 
