@@ -70,7 +70,7 @@ Your experiments are going to read input data (training data, existing models et
 RiseML will read and write this data using Kubernetes volumes.
 You either created these volumes in the [previous step](kubernetes.md#persistence), or you can configure the internal NFS provisioner below.
 
-### <a id="internal-nfs"></a> Internal NFS Provisioner ####
+### Internal NFS Provisioner ####
 
 For **test installations**, you can enable an internal NFS provisioner.
 The provisioner will use local storage of one of your nodes to create NFS volumes for `data` and `output` volumes and export them inside the Kubernetes cluster.
@@ -107,7 +107,7 @@ The following options are available:
 | `logs.persistence.*`             | Persistence configuration for logs; same options as `git.persistence` |
 | `registry.persistence.*`         | Persistence configuration for image registry; same options as `git.persistence`, but with default size of `100Gi` |
 
-## <a id="minio"></a> Minio
+## Minio
 
 [Minio](https://github.com/minio/minio) is an open source object storage server compatible with Amazon S3 APIs.
 RiseML uses Minio to provide access the `data` and `output` volumes via the RiseML CLI.
@@ -126,7 +126,7 @@ RiseML automatically detects if it is running on the Google Cloud and uses the d
 This allows you to reference private images in this registry using the `image: ` section of the `riseml.yml` for your experiments.
 
 
-## <a id="example-configuration"></a>Example Configurations
+## Example Configurations
 
 Below are a few example configurations for different setups.
 
@@ -182,4 +182,4 @@ git:
     enabled: true
 ```
 
-Note that (in addition to the `data` and `output` volumes) you need to create physical volumes for the claims `riseml-git-claim` and `riseml-db-claim` as described [here](kubernetes.md#persistent-volumes).
+Note that (in addition to the `data` and `output` volumes) you need to create physical volumes for the claims `riseml-git-claim` and `riseml-db-claim` as described [here](kubernetes.md#persistence).

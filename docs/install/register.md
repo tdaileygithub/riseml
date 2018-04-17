@@ -20,7 +20,7 @@ Total               40   495.2  8    89.4
 ```
 
 The list of nodes will exclude your master node and report the number of CPUs, GPUs, and amount of memory for each node as reported by Kubernetes.
-If any of your node misses GPUs, check the Kubernetes and kubelet configuration on that node (see [Kubernetes configuration](#kubernetes.md)).
+If any of your node misses GPUs, check the Kubernetes and kubelet configuration on that node (see [Kubernetes configuration](kubernetes.md)).
 
 Next, verify that RiseML system components could successfully connect to the NVIDIA driver on your GPU nodes:
 
@@ -37,7 +37,7 @@ ip-172-31-29-130  384.90  Tesla K80  0   11.2  0325016130551
                           Tesla K80  7   11.2  0325016132289
 ```
 This should report the NVIDIA driver version and GPUs.
-If this information is missing, see [Troubleshooting](#troubleshooting.md).
+If this information is missing, see [Troubleshooting](troubleshooting.md).
 
 
 Then, you can start a test experiment:

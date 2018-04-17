@@ -1,4 +1,4 @@
-## Distributed TensorFlow
+# Distributed TensorFlow
 
 Training big neural networks is computationally intensive.
 In the era of big data, training a model to convergence may take a prohibitively long time.
@@ -8,9 +8,9 @@ Therefore, it can be desirable to perform *distributed training* across multiple
 Distributed training is performed differently with different frameworks.
 There is no one size fits all solution.
 Instead, what works depends on the model and data; and you will need to try different variations.
-Currently, RiseML offers a distributed training integration with Tensorflow.
-Tensorflow supports different kinds of distributed training, e.g., synchronous or asynchronous updates, data-parallelism and model-parallelism (see the [Tensorflow Documentation on Distributed Training](https://www.tensorflow.org/deploy/distributed#replicated_training).
-For all of these approaches, Tensorflow uses the underlying concepts of *workers*, *parameter servers*, and *master*.
+Currently, RiseML offers a distributed training integration with TensorFlow.
+TensorFlow supports different kinds of distributed training, e.g., synchronous or asynchronous updates, data-parallelism and model-parallelism (see the [TensorFlow Documentation on Distributed Training](https://www.tensorflow.org/deploy/distributed#replicated_training).
+For all of these approaches, TensorFlow uses the underlying concepts of *workers*, *parameter servers*, and *master*.
 
 ![alt text](/img/distributed_training.png "Distributed Training")
 
@@ -23,7 +23,7 @@ To avoid bottlenecks, one can use several parameter servers that track different
 One worker is also designated as **master**.
 It coordinates the training process and takes care of maintenance operations such as writing intermediate checkpoints of the model to the disk.
 
-To start a worker, parameter server, or master, the Tensorflow convention is to run the same codebase on all nodes and execute different code paths based on an environment variable.
+To start a worker, parameter server, or master, the TensorFlow convention is to run the same codebase on all nodes and execute different code paths based on an environment variable.
 The *TF_CONFIG* environment variable on each node defines the roles of all nodes and how they can be reached (IP and port).
 The content of the TF_CONFIG variable is (serialized) JSON, e.g.:
 
@@ -55,7 +55,7 @@ Furthermore, in order to correctly specify the `cluster` information, it must be
 Of course, RiseML takes care of generating the correct TF_CONFIG for each experiment.
 
 The code on each node reads the TF_CONFIG variable and acts accordingly.
-Here is an example from the official Tensorflow repository:
+Here is an example from the official TensorFlow repository:
 
 ```python
   tf_config_json = json.loads(os.environ.get('TF_CONFIG'))
@@ -76,7 +76,7 @@ Here is an example from the official Tensorflow repository:
 
 ```
 
-To start a distributed training job with Tensorflow you need to 1) enable the Tensorflow integration and 2) specify the number of components and their required resources.
+To start a distributed training job with TensorFlow you need to 1) enable the TensorFlow integration and 2) specify the number of components and their required resources.
 Here is an example:
 
 ```
@@ -102,7 +102,7 @@ train:
                           --learning-rate {{ learning-rate }}
                           --training-data /data/my-project
 ```
-The Tensorflow integration is enabled with `framework: tensorflow`.
+The TensorFlow integration is enabled with `framework: tensorflow`.
 Additionally, the `tensorflow` section describes how to perform distributed computing.
 Here, we request 3 workers.
 The first worker (with index 0) is also designated as master.
@@ -143,10 +143,10 @@ ID         PROJECT    STATE    CPU % MEM % MEM-Used / Total GPU %  GPU-MEM % GPU
 
 To kill the distributed experiment, use the canonical ID of the experiment `riseml kill 4`.
 
-If your code writes Tensorflow summary information, progress can also be visualized via Tensorboard in a browser.
-How to enable and access Tensorboard is described in the [Tensorboard Guide](/guide/tensorboard.md).
+If your code writes TensorFlow summary information, progress can also be visualized via TensorBoard in a browser.
+How to enable and access TensorBoard is described in the [Tensorboard Guide](/guide/tensorboard.md).
 
 As with regular experiments, an output directory is defined in the `OUTPUT_DIR` environment variable.
 For distributed training, this directory is shared between all jobs.
 This allows the components to share data, e.g., the master can write checkpoints and request a parameter server to load its parameters from this checkpoint.
-In addition, this allows Tensorflow summary information to be written and visualized in Tensorboard.
+In addition, this allows TensorFlow summary information to be written and visualized in Tensorboard.

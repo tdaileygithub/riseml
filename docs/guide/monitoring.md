@@ -1,4 +1,4 @@
-## Monitoring an Experiment
+# Monitoring an Experiment
 
 At any point in time you can see the status of your running experiments by issuing the `riseml status` command:
 

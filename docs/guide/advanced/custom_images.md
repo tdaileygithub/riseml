@@ -1,10 +1,10 @@
-## Customizing Images
+# Customizing Images
 
 When configuring an experiment you can use an image from a set of publicly available images and even customize it further using build steps.
 
 Instead of using build steps, you can also generate your own image using Docker and make it publicly available.
 
-### Build Steps
+## Build Steps
 
 Here's an example for a TensorFlow image with an added build step:
 
@@ -26,7 +26,7 @@ To speedup experiments, builds are cached between consecutive runs.
 Changes in the code or in the list of commands invalidates the build cache.
 The ```run``` section contains a command that is executed within the experiment's container.
 
-### Docker
+## Docker
 
 **Note:** We strongly recommend using [build steps]() instead of using Docker to create custom images.
 

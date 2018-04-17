@@ -13,8 +13,8 @@ With RiseML, you can easily track experiments, run distributed learning experime
 
 Run and track your first experiment using the [Quick Start](quick_start.md) guide.
 
-To learn how to install and manage a RiseML cluster, follow the [installation instructions](install).
+To learn how to install and manage a RiseML cluster, follow the [installation instructions](install/index.md).
 
-After installation, you can learn how to [run and track experiments](guide/README.md).
+After installation, you can learn how to [run and track experiments](guide/preparation.md).
 
-Additionally, we provide a reference on [experiments](/reference/experiments/README.md) and their configuration, the [runtime environment](/reference/environment.md) and [CLI flags](/reference/cli.md).
+Additionally, we provide a reference on [experiments](reference/experiments/config.md) and their configuration, the [runtime environment](/reference/environment.md) and [CLI flags](/reference/cli.md).

@@ -1,4 +1,4 @@
-## Configuring Experiments
+# Experiment Configuration
 
 The `riseml.yml` file is the single source of truth for your RiseML project.
 It defines your experiment, i.e., which image and commands to run, which framework to use,
@@ -7,13 +7,13 @@ and which resources to acquire.
 For reference, the following will give you an overview of the
 `riseml.yml`'s possibilities, grouped by feature.
 
-### Set project name
+## Set project name
 **Required.** Set the name of your current project.
 ```yaml
 project: name-of-project
 ```
 
-### Specify which base image to use
+## Specify which base image to use
 **Optional.** In case you do not wish to use the provided frameworks (see below) you can choose to run an experiment in a custom Docker image. Use the `image` field to provide a valid DockerHub reference. Additionally you can provide an `install` field to supplement steps before the experiment is run; these are specified as a YAML list.
 
 ```yaml
@@ -23,7 +23,7 @@ train:
   - pip install -r requirements.txt
 ```
 
-### <a id="images"></a> Recommended Images
+### Recommended Images
 
 Here is a list of repositories and images that we recommend:
 
@@ -38,7 +38,7 @@ Here is a list of repositories and images that we recommend:
 | Lasagne        | [```kaixhin/cuda-lasagne```](https://hub.docker.com/r/kaixhin/cuda-lasagne/) | Remove `cuda-` prefix for CPU only |
 
 
-*For **TensorFlow**, we recommend using the `framework` field (described below under [Integrate with Tensorflow](#integrate-tf))*
+*For **TensorFlow**, we recommend using the `framework` field (described below under [Integrate with Tensorflow](#integrate-with-tensorflow))*
 
 ### Specify command to run
 **Required.** You must tell RiseML which command it should run within your final image.
@@ -61,7 +61,7 @@ train:
 If any of these commands fails, execution will stop immediately. Hence, the following
 commands will not get executed.
 
-### Specify resources
+## Specify resources
 **Required.** You can specify the resources you want your experiment to consume.
 `cpus` is the number or fraction of CPUs you require,
 `mem` denotes your memory requirements in gigabytes, and
@@ -75,7 +75,7 @@ train:
     gpus: 2
 ```
 
-### Define a Hyperparameter Experiment
+## Define a Hyperparameter Experiment
 **Optional.** You can define a hyperparameter experiment by adding one or multiple
 parameter definitions. `parameters` is a YAML map, whose keys are the names of the
 parameters you want to define. Its values either contain a YAML list of possible values
@@ -106,7 +106,7 @@ train:
   run: python run.py --num-epochs {{num-epochs}} --embedding-size {{embedding-size}}
 ```
 
-### <a id="integrate-tf"></a>Integrate with Tensorflow
+## Integrate with Tensorflow
 To use RiseML's Tensorflow integration, you can specify `framework: tensorflow`
 and add a `tensorflow` section.
 Currently, the Tensorflow integration supports specifying the version to use, adding a Tensorboard to your

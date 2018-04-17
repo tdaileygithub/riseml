@@ -1,4 +1,4 @@
-## Preparations
+# Preparation
 
 Training a machine learning model, usually requires two things: *training data* and *machine learning code*.
 The training data contains examples from which a model can be learned.
@@ -6,7 +6,7 @@ Your machine learning code is an algorithmic representation of your model and le
 The code reads the training data, updates the model's parameters, and stores the model on the disk.
 
 
-### Data Setup
+## Data Setup
 
 During installation and setup, a `data` folder to store training data was configured.
 When you start an experiment, this shared folder is made accessible via `/data` in your runtime environment.
@@ -23,7 +23,7 @@ $ find .
 ```
 In the runtime environment of your experiment, you will be able to access `/data/ai-toaster/images/train/1.jpg` etc.
 
-### Project Setup
+## Project Setup
 
 The code to compute your model is developed locally and resides on your local workstation.
 To associate and configure a project you need to create a configuration file.

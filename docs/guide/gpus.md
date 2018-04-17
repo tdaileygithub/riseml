@@ -1,4 +1,4 @@
-## Starting Experiments on GPUs
+# Starting Experiments on GPUs
 
 In order to run experiments with GPUs, you need to specify the number of required GPUs in the job configuration:
 
@@ -18,7 +18,7 @@ train:
 ```
 This will allocate the requested amount of GPUs for your experiment.
 Note that a single job can only run on a single node.
-Therefore, a job cannot use more GPUs than what any single node provides. However, an experiment can contain multiple jobs as in [distributed training](https://github.com/riseml/docs/blob/breakawaybilly-patch-1/guide/advanced/distributed.md) training or even sub-experiments as in [hyperparameter optimization](https://github.com/riseml/docs/blob/breakawaybilly-patch-1/guide/advanced/hyper.md).
+Therefore, a job cannot use more GPUs than what any single node provides. However, an experiment can contain multiple jobs as in [distributed training](advanced/distributed_tensorflow.md) training or even sub-experiments as in [hyperparameter optimization](advanced/hyper.md).
 
 **Important**: To make use of the GPUs, you need to use or build an image that provides the required libraries, e.g. CUDA, for GPUs.
 We recommend using the official `nvidia/cuda` or `tensorflow-gpu` images (if you use Tensorflow) or derivations thereof.

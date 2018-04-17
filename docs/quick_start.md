@@ -1,9 +1,9 @@
 # Quick Start
 
-This guide will get you started with RiseML.
+This guide will walk you through a quick example on how to run a machine learning experiment with RiseML on a cluster.
 In the following, we are going to assume that you already have a running [installation of RiseML](/install).
 
-First, we're going to create an empty project folder:
+First, let's create an empty project folder to contain our files:
 ```
 $ mkdir simple-project
 $ cd simple-project
@@ -21,7 +21,7 @@ project: simple-project
 train:
   framework: tensorflow
   tensorflow:
-    version: 1.2.0
+    version: 1.5.0
   install:
     - apt-get -y update
     - apt-get -y install git
@@ -34,7 +34,7 @@ train:
   - python models/tutorials/image/imagenet/classify_image.py
 ```
 
-This defines configurations to run an experiment.
+This defines the configuration to run an experiment.
 One of the Tensorflow tutorials is cloned inside a standard Tensorflow image.
 The tutorial code is executed via the specified command.
 The configuration also specifies the resources the experiment requires.
@@ -87,9 +87,10 @@ Syncing project (0 B, 3 files)...done
 
 Congratulations, you successfully ran your first machine-learning experiment on RiseML!
 This actually:
-* sent your project directory to the RiseML cluster
-* built a container image for your experiment with your revisioned code
-* ran the image on one of your cluster's nodes
-* stored the output in a specific output directory for this experiment
 
-You should continue reading the [User Guide](/guide) to know what else RiseML offers you.
+- sent your project directory to the RiseML cluster
+- built a container image for your experiment with your revisioned code
+- ran the image on one of your cluster's nodes
+- stored the output in a specific output directory for this experiment
+
+You should continue reading the [User Guide](guide/preparation.md) to know what else RiseML offers you.

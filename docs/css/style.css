@@ -1,0 +1,48 @@
+.md-header, .md-tabs, .md-nav__source{
+    background: -webkit-linear-gradient(to right, #2E004F, #371388);
+    background: linear-gradient(to right, #2E004F, #371388);
+}
+
+.md-typeset table:not([class]) {
+  font-size: 100%;
+}
+
+.md-typeset code {
+  word-break: normal;
+}
+
+.md-tabs__link, .md-nav {
+  font-size: 1.5rem;
+}
+
+.md-footer-nav {
+    background: #2F2955;
+}
+
+.md-typeset table:not([class]) th {
+    background: #F6F6F6;
+    color: black;
+}
+
+.md-typeset pre, .md-typeset code{
+  font-size: 100%;
+}
+
+@media only screen and (min-width: 76.25em) {
+    .md-main__inner {
+      max-width: none;
+    }
+    .md-sidebar--primary {
+      left: 0;
+    }
+    .md-sidebar--secondary {
+      right: 0;
+      margin-left: 0;
+      -webkit-transform: none;
+      transform: none;
+    }
+  }
+
+  @font-face{
+    font-family: ProximaNovaRegular;
+    src: url('ProximaNova-Regular.woff'), url('ProximaNova-Regular.woff') format('woff');}
