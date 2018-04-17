@@ -14,9 +14,10 @@ mkdocs build -f docs/mkdocs.yml -d $BUILD_FOLDER
 # Remove artifacts that don' belong deployed
 rm $BUILD_FOLDER/mkdocs.yml
 rm $BUILD_FOLDER/requirements.txt
+rm -rf $BUILD_FOLDER/env
 
 # Sync local build folder > remote s3 bucket, delete remote files not present locally
-aws s3 sync --delete $BUILD_FOLDER $S3_BUCKET --dryrun
+aws s3 sync --delete $BUILD_FOLDER $S3_BUCKET
 
 # Invalidate CloudFront CDN
 aws configure set preview.cloudfront true
