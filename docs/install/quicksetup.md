@@ -1,10 +1,10 @@
 # Quick Setup
 
-For both quick installations options, **please have your account key ready**.
+For all of our quick installations options, **please have your account key ready**.
 If you don't have one yet, please obtain one by [registering](https://riseml.com/pricing).
-You can continue with the installation on [AWS](#aws) or on a [bare Kubernetes cluster](#kubernetes).
+You can continue with the installation on [AWS](#aws), on [GKE](#gke) or on a [bare Kubernetes cluster](#kubernetes).
 
-## Install on AWS
+## <a name='aws'></a>Install on AWS
 
 If you have chosen to try out RiseML on AWS, we provide a quick start installer.
 The installer will guide you through installing Kubernetes and RiseML on AWS.
@@ -131,7 +131,96 @@ To avoid overwriting existing Kubernetes configuration file the installer create
 
 With this set you can troubleshoot your K8s cluster with `kubectl`.
 
-## Install on Bare Kubernetes
+## <a name='gke'></a>Install on GKE
+This quick installation will show you how to setup a beta GKE cluster that is GPU-enabled.
+You will need Google's `gcloud` CLI and `kubectl` for that.
+
+Start by creating a GKE Kubernetes cluster with some GPUs:
+```
+$ gcloud beta container clusters create test-3x4-k80 --project test-clusters --num-nodes=3 --machine-type=n1-standard-8 --accelerator type=nvidia-tesla-k80,count=4 --zone us-central1-c --cluster-version 1.9.2-gke.1
+```
+
+Next, install the Nvidia drivers to your cluster:
+
+```
+$ kubectl create -f https://raw.githubusercontent.com/GoogleCloudPlatform/container-engine-accelerators/k8s-1.9/nvidia-driver-installer/cos/daemonset-preloaded.yaml
+```
+
+Wait a few minutes to let the driver installation finish. Continue with setting up
+a RiseML namespace and Helm:
+
+```
+$ kubectl create namespace riseml
+$ kubectl create serviceaccount tiller --namespace kube-system
+$ kubectl create clusterrolebinding tiller-cluster-admin-binding \ --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
+$ helm init --service-account tiller --tiller-namespace kube-system
+$ helm repo add riseml-charts https://cdn.riseml.com/helm-charts
+```
+
+Create a configuration file `riseml-config.yml` and adjust **accountKey** and
+**adminEmail** to your values:
+
+```
+$ cat riseml-config.yml
+accountKey: <your_account_key>
+adminApiKey: mlriseapikey
+adminEmail: <your_email>
+git:
+  persistence:
+     enabled: true
+logs:
+  persistence:
+    enabled: true
+nfsProvisioner:
+  enabled: true
+  path: /tmp/riseml
+  persistence:
+    enabled: true
+nodePorts: false
+nvidiaDriverDir: /home/kubernetes/bin/nvidia
+postgresql:
+  persistence:
+    enabled: true
+    subPath: data
+registry:
+  persistence:
+    enabled: true
+scheduleOnMaster: false
+```
+
+Next, install RiseML into your GKE cluster and wait for it to spin up completely:
+
+```
+$ helm install riseml-charts/riseml --name riseml --namespace riseml -f riseml-config.yml
+$ watch kubectl -n riseml get pods
+```
+
+Wait until all pods are running and execute the commands the `helm install` gave you to get the connection info needed to login.
+
+Next, download the RiseML CLI from http://docs.riseml.com/install/cli.html and login using
+the info from above:
+
+```
+$ riseml user login --api-key XYZ --api-host XYZ:80
+```
+
+Finally, check your installation:
+
+```
+$ riseml system info
+RiseML Client/Server Version: 1.0.3/1.1.0
+RiseML Cluster ID: 575cbb40-1cae-11e8-ad4d-0a580a380032
+Kubernetes Version 1.9+ (Build Date: 2018-01-31T22:30:55Z)
+
+NODE CPU MEM GPU GPU MEM
+gke-test-3x4-k80-default-pool-1e0c6fe8-dd26 7 26.0 4 44.7
+gke-test-3x4-k80-default-pool-1e0c6fe8-qv7l 7 26.0 4 44.7
+gke-test-3x4-k80-default-pool-1e0c6fe8-h2t3 7 26.0 4 44.7
+--------------------------------------------------------------------
+Total 21 77.9 12 134.1
+```
+
+## <a name='kubernetes'></a>Install on Bare Kubernetes
 
 For this installation, you will need a **Kubernetes cluster** with version at least 1.8 that is already **installed and working**.
 If you don't have a Kubernetes cluster, you can check the [Kubernetes docs](https://kubernetes.io/docs/setup/pick-right-solution/) for the various installation options.
