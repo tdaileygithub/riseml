@@ -1,3 +1,11 @@
+# RiseML v1.2.3 (2018/05/09)
+
+This release changes behaviour for failing hyperparameter experiments and pins the minio version.
+
+## Release Notes
+- Hyperparameter experiments no longer fail when a (sub-) experiment fails. You can also kill single (sub-) experiments.
+- The minio version is now pinned to RELEASE.2018-04-19T22-54-58Z, it introduced a regression bug in the latest versions
+
 # RiseML v1.2.2 (2018/04/09)
 
 This release adds support for private registries on GKE and improves scheduling capabilities.
