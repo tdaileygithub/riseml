@@ -135,10 +135,25 @@ With this set you can troubleshoot your K8s cluster with `kubectl`.
 This quick installation will show you how to setup a beta GKE cluster that is GPU-enabled.
 You will need Google's `gcloud` CLI and `kubectl` for that.
 
-Start by creating a GKE Kubernetes cluster with some GPUs:
+**Note**: on GKE you will need to request GPU resources from google.  Depending on the type of GPUs you want to run this may take anywhere from a few hours to weeks or more.
+
+Once GPU quota has been assigned by google start by creating a GKE Kubernetes cluster with some GPUs:
 ```
-$ gcloud beta container clusters create test-3x4-k80 --project test-clusters --num-nodes=3 --machine-type=n1-standard-8 --accelerator type=nvidia-tesla-k80,count=4 --zone us-central1-c --cluster-version 1.9.2-gke.1
+$ gcloud beta container clusters create test-3x4-k80 --project test-clusters --num-nodes=3 --machine-type=n1-standard-8 --accelerator type=nvidia-tesla-k80,count=4 --zone us-central1-c --cluster-version 1.10.2-gke.1
 ```
+
+- [--machine-type=AWS Machine Types](https://cloud.google.com/compute/docs/machine-types)
+- [--cluster-version=AWS Machine Types](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades)
+
+Next, update local .kube/config with the cluster that was just created
+
+  gcloud container clusters get-credentials test-3x4-k80 --zone us-central1-c --project test-clusters
+
+Next, install helm client
+
+  curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get | bash 
+
+Helm is installed to /usr/local/bin/helm  
 
 Next, install the Nvidia drivers to your cluster:
 
